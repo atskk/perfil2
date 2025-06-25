@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Página do Arthur</title>
+   <style>
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+       
+       body {
+           font-family: 'Montserrat', sans-serif;
+           max-width: 800px;
+           margin: 0 auto;
+           padding: 20px;
+           background-color: #f5f5f5;
+       }
+       
+       #relogio {
+           font-size: 1.2em;
+           text-align: right;
+           margin-bottom: 20px;
+           color: #333;
+       }
+       
+       button {
+           padding: 10px 15px;
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           margin: 10px 0;
+       }
+       
+       button:hover {
+           background-color: #45a049;
+       }
+       
+       img {
+           max-width: 100%;
+           height: auto;
+           display: block;
+           margin: 10px 0;
+           border-radius: 8px;
+       }
+       
+       a {
+           color: #0066cc;
+           text-decoration: none;
+       }
+       
+       a:hover {
+           text-decoration: underline;
+       }
+   </style>
+</head>
+<body>
+   <div id="relogio"></div>
+   
+   <p>
+       Olá! meu nome é Arthur Scherer!
+   </p>
+   <p>
+       Tenho 16 anos, estudo no CPM, estou no terceiro ano G.
+   </p>
+   <p>
+       Gosto muito de música, militarismo, e principalmente, estudar sobre nosso senhor e salvador Jesus Cristo!
+   </p>
+   <p>
+       Estou estudando esse ano para passar na EsPCEx (Escola Preparatória de Cadetes do Exército), que é o meu sonho
+   </p>
+   
+   <button id="trocarImagem">Trocar Imagem</button>
+   <img id="imagem" src="concurso-espcex-2023.jpg" alt="espcex" width="300" height="200">
+   <p id="legenda">Essa é uma foto da Escola</p>
+   
+   <p>
+       <a href="https://www.youtube.com/watch?v=jdvIGAfiEoM">Clique aqui para ver um desfile da EsPCEx</a>
+   </p>
+   
+   <p>
+       Muito obrigado por ler!
+   </p>
+
+   <script>
+       // Atualizar relógio em tempo real
+       function atualizarRelogio() {
+           const agora = new Date();
+           const opcoes = { 
+               hour: '2-digit', 
+               minute: '2-digit', 
+               second: '2-digit',
+               day: '2-digit',
+               month: '2-digit',
+               year: 'numeric'
+           };
+           document.getElementById('relogio').textContent = agora.toLocaleDateString('pt-BR', opcoes);
+       }
+       
+       setInterval(atualizarRelogio, 1000);
+       atualizarRelogio(); // Chamar imediatamente para evitar delay inicial
+       
+       // Trocar entre imagens
+       const imagens = [
+           { src: "concurso-espcex-2023.jpg", legenda: "Essa é uma foto da Escola" },
+           { src: "brasao-espcex.jpg", legenda: "Brasão da EsPCEx" }
+       ];
+       
+       let imagemAtual = 0;
+       document.getElementById('trocarImagem').addEventListener('click', function() {
+           imagemAtual = (imagemAtual + 1) % imagens.length;
+           document.getElementById('imagem').src = imagens[imagemAtual].src;
+           document.getElementById('legenda').textContent = imagens[imagemAtual].legenda;
+       });
+   </script>
+</body>
+</html>
